@@ -18,9 +18,6 @@ class ArticlesController < ApplicationController
     def create
         @articles = Article.new(article_params)
         @articles.save
-
-
-
         redirect_to article_path(@articles)
     end
 
