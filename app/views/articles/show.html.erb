@@ -1,4 +1,9 @@
 <h1><%= @articles.title %></h1>
+<p>
+    <% if @articles.image.exists? %>
+        <%= image_tag @articles.image.url %> <br/>
+    <% end %>    
+</p>
 <p><%= @articles.body %></p>
 <hr>
 <%= render partial: 'comments/form' %>
@@ -9,10 +14,10 @@
         <%= link_to tag.name, tag_path(tag)%>
     <% end %>
 </p>
-<%= link_to "<< Back to Articles list", articles_path %>
+ <button type="button"><%= link_to "Back to Articles list", articles_path %></button> 
 <hr>
-<%= link_to "edit", edit_article_path(@articles)  %>
-<%= link_to "delete", article_path(@articles), method: :delete, data: {confirm: "Really delete the article?"} %>
+ <button type="button"><%= link_to "Edit", edit_article_path(@articles)  %> </button> 
+ <button type="button"><%= link_to "Delete", article_path(@articles), method: :delete, data: {confirm: "Really delete the article?"} %> </button> 
 <br>
 <h3>Comments</h3>
 <%= render partial: 'articles/comment', collection: @articles.comments %>
