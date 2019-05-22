@@ -1,5 +1,5 @@
 class TagsController < ApplicationController
-    before_filter :require_login, except: [:create, :index]
+    before_action :require_login, except: [:create, :index]
     
     def show
 		@tag = Tag.find(params[:id])
