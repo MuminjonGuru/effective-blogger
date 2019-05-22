@@ -16,8 +16,10 @@
 </p>
  <button type="button"><%= link_to "Back to Articles list", articles_path %></button> 
 <hr>
- <button type="button"><%= link_to "Edit", edit_article_path(@articles)  %> </button> 
- <button type="button"><%= link_to "Delete", article_path(@articles), method: :delete, data: {confirm: "Really delete the article?"} %> </button> 
+<% if logged_in? %>
+  <button type="button"><%= link_to "Edit", edit_article_path(@articles)  %> </button> 
+  <button type="button"><%= link_to "Delete", article_path(@articles), method: :delete, data: {confirm: "Really delete the article?"} %> </button> 
+<% end %>
 <br>
 <h3>Comments</h3>
 <%= render partial: 'articles/comment', collection: @articles.comments %>
